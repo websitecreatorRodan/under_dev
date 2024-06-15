@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodan's Furniture Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            color: #2D3E50; /* Dark blue */
+        }
+
+        header {
+            background-color: #2D3E50; /* Dark blue */
+            color: #D4AF37; /* Gold */
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container {
+            padding: 100px 20px 20px 20px; /* Adjusting for fixed header */
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .slides {
+            display: none;
+            width: 100%;
+        }
+
+        .slideshow-container img {
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            user-select: none;
+            border-radius: 0 3px 3px 0;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .about,
+        .products,
+        .contact {
+            margin-top: 40px;
+        }
+
+        .about h2,
+        .products h2,
+        .contact h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2D3E50; /* Dark blue */
+            font-family: 'Playfair Display', serif;
+        }
+
+        .about p {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            color: #454545;
+        }
+
+        .products-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .product {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+        }
+
+        @media (min-width: 600px) {
+            .product {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (min-width: 900px) {
+            .product {
+                width: calc(33.33% - 20px);
+            }
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .product h3 {
+            margin: 10px 0;
+            font-size: 22px;
+            color: #2D3E50; /* Dark blue */
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 600px;
+            margin: auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact form input,
+        .contact form textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .contact form button {
+            padding: 15px;
+            background-color: #2D3E50; /* Dark blue */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .contact form button:hover {
+            background-color: #1A2736;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2D3E50; /* Dark blue */
+            color: #D4AF37; /* Gold */
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Rodan's Furniture Shop</h1>
+    </header>
+
+    <div class="slideshow-container">
+        <div class="slides">
+            <img src="download (1).jpg" alt="Elegant Sofa">
+        </div>
+        <div class="slides">
+            <img src="download.jpg" alt="Modern Dining Table">
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <div class="container">
+        <!-- About Section -->
+        <section class="about">
+            <h2>About Us</h2>
+            <p>Welcome to Rodan's Furniture Shop! We specialize in offering high-quality and stylish furniture to make your home comfortable and elegant. Established in 2023, we pride ourselves on providing excellent customer service and a wide range of products to suit every taste and budget.</p>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products">
+            <h2>Our Products</h2>
+            <div class="products-grid" id="products">
+                <!-- Products will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact">
+            <h2>Contact Us</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Rodan's Furniture Shop. All rights reserved.</p>
+    </footer>
+
+    <script>
+        var slideIndex = 0;
+        var slides = document.getElementsByClassName("slides");
+
+        function showSlides() {
+            for (var i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 4000); // Change image every 4 seconds
+        }
+
+        function plusSlides(n) {
+            slideIndex += n - 1;
+            if (slideIndex < 1) {
+                slideIndex = slides.length - 1;
+            } else if (slideIndex >= slides.length) {
+                slideIndex = 0;
+            }
+            for (var i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex].style.display = "block";
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            showSlides();
+
+            var productData = [
+                {name: "Elegant Sofa", img: "sofa.jpg"},
+                {name: "Modern Dining Table", img: "dining_table.jpg"},
+                {name: "Luxurious Bed", img: "bed.jpg"},
+                {name: "Stylish Chair", img: "chair.jpg"},
+                {name: "Rustic Coffee Table", img: "coffee_table.jpg"}
+            ];
+
+            var productsGrid = document.getElementById("products");
+
+            productData.forEach(function (product) {
+                var productCard = document.createElement("div");
+                productCard.classList.add("product");
+
+                var imgElement = document.createElement("img");
+                imgElement.src = product.img;
+                imgElement.alt = product.name;
+
+                var productName = document.createElement("h3");
+                productName.textContent = product.name;
+
+                productCard.appendChild(imgElement);
+                productCard.appendChild(productName);
+
+                productsGrid.appendChild(productCard);
+            });
+        });
+    </script>
+</body>
+</html>
